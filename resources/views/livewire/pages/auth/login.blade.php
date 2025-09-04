@@ -29,6 +29,15 @@ new #[Layout('layouts.guest')] class extends Component
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
+        <!-- Data Test -->
+        <div class="mb-4 text-sm text-gray-600 text-center">
+            <p>
+                <span>Correo para test: admin@challenge.com</span>
+            </p>
+            <p>
+                <span>Password: a123456789</span>
+            </p>
+        </div>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />

@@ -67,7 +67,7 @@ class Index extends Component
             return;
         }
 
-        if (auth()->id() == $userId) {
+        if (auth()->id() == $this->selectedUser->id) {
             session()->flash('warning', 'No puedes eliminar tu propio usuario.');
             return;
         }

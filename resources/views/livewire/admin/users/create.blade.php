@@ -51,7 +51,7 @@
                 </label>
                 <div class="flex relative gap-2">
 
-                    <input :type="show ? 'text' : 'password'" x-model="password"
+                    <input :type="show ? 'text' : 'password'" wire:model.defer="password"
                         placeholder="********" required
                         class="flex-1 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-3 transition duration-150" />
 

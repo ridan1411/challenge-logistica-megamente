@@ -53,6 +53,8 @@ class Edit extends Component
 
         // Actualizamos el rol
         $user->syncRoles([$this->selectedRole]);
+        $user->updated_at = now();
+        $user->save();
 
         session()->flash('message', 'Usuario actualizado correctamente.');
     }

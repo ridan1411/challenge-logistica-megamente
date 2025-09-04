@@ -23,7 +23,7 @@
                         {{ $user->getRoleNames()->isNotEmpty() ? $user->getRoleNames()->first() : 'Sin rol asignado' }}
                     </td>
                     <td class="px-4 py-3">{{ $user->created_at }}</td>
-                    <td class="px-4 py-3">{{ $user->updated_at }}</td>
+                    <td class="px-4 py-3">{{ $user->updated_at->setTimezone('America/Mexico_City') }}</td>
 
                     <td class="px-4 py-3 flex items-center justify-end space-x-2">
                         <!-- Show -->
