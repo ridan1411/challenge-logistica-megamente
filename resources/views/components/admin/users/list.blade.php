@@ -3,6 +3,7 @@
         <thead class="text-xs text-gray-900 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-900">
             <tr>
                 <th scope="col" class="px-4 py-3">Usuario</th>
+                <th scope="col" class="px-4 py-3">Email</th>
                 <th scope="col" class="px-4 py-3">Rol</th>
                 <th scope="col" class="px-4 py-3">Creado</th>
                 <th scope="col" class="px-4 py-3">Editado</th>
@@ -17,6 +18,7 @@
                 <tr class="border-b dark:border-gray-200" wire:key="{{ $uuid }}">
                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-gray">
                         {{ $user->name }}</th>
+                    <td class="px-4 py-3 text-blue-800"> <a href="mailto:{{ $user->email }}"> {{ $user->email }}</a></td>
                     <td class="px-4 py-3">
                         {{ $user->getRoleNames()->isNotEmpty() ? $user->getRoleNames()->first() : 'Sin rol asignado' }}
                     </td>
@@ -48,7 +50,7 @@
 
                         </a>
 
-                        @if(auth()->user()->hasRole('Administrador'))
+                        @if(auth()->user()->hasRole('Administrador') && auth()->user()->id != $user->id)
                             <button type="button"
                                     class="text-red-500 hover:text-red-700"
                                     title="Eliminar usuario"

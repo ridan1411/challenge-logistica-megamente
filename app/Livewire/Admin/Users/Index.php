@@ -46,6 +46,12 @@ class Index extends Component
             session()->flash('warning', 'No tienes permisos para eliminar usuarios.');
             return;
         }
+
+        if (auth()->id() == $userId) {
+            session()->flash('warning', 'No puedes eliminar tu propio usuario.');
+            return;
+        }
+
         $this->selectedUser = User::findOrFail($userId);
         $this->confirmingDelete = true;
     }
@@ -58,6 +64,11 @@ class Index extends Component
         // Verifica nuevamente antes de ejecutar la eliminación
         if (!auth()->user()->hasRole('Administrador')) {
             session()->flash('warning', 'No tienes permisos para eliminar usuarios.');
+            return;
+        }
+
+        if (auth()->id() == $userId) {
+            session()->flash('warning', 'No puedes eliminar tu propio usuario.');
             return;
         }
 

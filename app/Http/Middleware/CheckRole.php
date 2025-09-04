@@ -21,8 +21,8 @@ class CheckRole
         }
 
         // Assuming roles are stored in a 'role' attribute on the User model
-        if (Auth::user()->role !== $role) {
-            return response()->view('errors.unauthorized'); // usuario no autorizado
+        if (!Auth::user()->hasRole($role)) {
+            return response()->view('errors.unauthorized', [], 403); // usuario no autorizado
         }
 
         return $next($request);
